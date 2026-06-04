@@ -19,7 +19,7 @@
         </p>
         
         <div class="d-flex justify-content-center gap-4 mt-5" data-aos="fade-up" data-aos-duration="1200" data-aos-delay="400">
-            <a href="#paket" class="btn btn-mulai text-decoration-none shadow-lg">Mulai Sekarang</a>
+            <a href="{{ url('/layanan/murmer') }}" class="btn btn-mulai text-decoration-none shadow-lg">Mulai Sekarang</a>
             <a href="{{ url('/tentang') }}" class="btn btn-pelajari text-decoration-none">Pelajari Lebih Lanjut</a>
         </div>
     </div>

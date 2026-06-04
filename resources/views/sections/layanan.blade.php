@@ -1,109 +1,77 @@
-<section id="layanan" class="py-5" style="background-color: #ffffff;">
+<section id="layanan" class="py-5" style="background-color: #f8fafc;">
     <div class="container py-5">
-        
         <div class="text-center mb-5" data-aos="fade-up">
-            <span class="badge rounded-pill px-3 py-1 mb-3" style="background-color: #e0f2fe; color: #0284c7; font-weight: 600;">Our Services</span>
-            <h2 class="fw-bold mb-3" style="color: #0f172a;">Layanan Internet Terlengkap</h2>
-            <p class="text-muted">Kami menyediakan berbagai solusi koneksi internet untuk memenuhi kebutuhan rumah dan bisnis Anda.</p>
+            <h2 class="fw-bold text-primary">ZAYNET INTERNET</h2>
+            <p class="text-muted">Support by INTI DATA GUNA</p>
         </div>
+        
+        @php
+        $pakets = [
+            [
+                'nama' => 'PAKET MURMER',
+                'speed' => '10 Mbps',
+                'harga' => 'Rp116K',
+                'fitur' => [
+                    'Unlimited Internet',
+                    'Stabil untuk Streaming',
+                    'Support 24 Jam',
+                    'Include PPN11% + Sewa modem 5k/bln*',
+                    'Biaya Pemasangan 100K'
+                ]
+            ],
+            [
+                'nama' => 'PAKET PREMIUM',
+                'speed' => '25 Mbps',
+                'harga' => 'Rp150K',
+                'popular' => true,
+                'fitur' => [
+                    'Unlimited Internet',
+                    'Streaming Full HD',
+                    'Streaming & Gaming',
+                    'Support 24 Jam',
+                    'Include PPN11% + Sewa modem 5k/bln*',
+                    'Biaya Pemasangan 100K'
+                ]
+            ],
+            [
+                'nama' => 'PAKET SULTAN',
+                'speed' => '50 Mbps',
+                'harga' => 'Rp200K',
+                'fitur' => [
+                    'Unlimited Internet',
+                    'Ping Stabil Gaming',
+                    'Streaming 4K',
+                    'Prioritas Support',
+                    'Include PPN11% + Sewa modem 5k/bln*',
+                    'Biaya Pemasangan 100K'
+                ]
+            ],
+        ];
+        @endphp
 
-        <div class="row g-4">
-            
-            <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="100">
-                <div class="card border-0 shadow-sm rounded-4 h-100 p-4 text-center d-flex flex-column hover-lift">
-                    <div class="mx-auto mb-4" style="width: 70px; height: 70px; background-color: #e0f2fe; color: #0284c7; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 28px;">
-                        <i class="fas fa-globe"></i>
-                    </div>
-                    <h5 class="fw-bold mb-3">Dedicated Internet</h5>
-                    <p class="text-muted small mb-4">Koneksi internet khusus untuk bisnis dengan bandwidth terjamin dan uptime 99.5%</p>
+        <div class="row g-4 justify-content-center">
+            @foreach($pakets as $paket)
+            <div class="col-lg-4 col-md-6" data-aos="fade-up">
+                <div class="card border-0 shadow-sm rounded-4 p-4 h-100 text-center bg-white position-relative {{ isset($paket['popular']) ? 'border-primary shadow-lg' : '' }}" style="transition: transform 0.3s; {{ isset($paket['popular']) ? 'border: 2px solid #4f46e5 !important; transform: scale(1.05); z-index: 2;' : '' }}" onmouseover="this.style.transform='translateY(-7px)'" onmouseout="this.style.transform='{{ isset($paket['popular']) ? 'scale(1.05)' : 'translateY(0)' }}'">
+                    @if(isset($paket['popular']))
+                        <span class="badge position-absolute top-0 start-50 translate-middle rounded-pill px-3 py-2" style="background-color: #4f46e5;">Most Popular</span>
+                    @endif
+                    <h6 class="fw-bold mb-1 mt-3 text-dark">{{ $paket['nama'] }}</h6>
+                    <h2 class="fw-bold mb-3" style="color: #4f46e5;">{{ $paket['speed'] }}</h2>
+                    <h4 class="fw-bold text-dark mb-4">{{ $paket['harga'] }}</h4>
                     
-                    <ul class="list-unstyled text-start small mb-4 mt-auto">
-                        <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i> Bandwidth terjamin</li>
-                        <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i> Uptime 99.5%</li>
-                        <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i> 24/7 Support</li>
-                        <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i> SLA Guarantee</li>
+                    <ul class="list-unstyled small mb-4 text-start flex-grow-1 mx-auto" style="max-width: 250px;">
+                        @foreach($paket['fitur'] as $fitur)
+                            <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i> {{ $fitur }}</li>
+                        @endforeach
                     </ul>
                     
-                    <div class="mt-auto">
-                        <p class="fw-bold small mb-3" style="color: transparent; user-select: none;">Contact Me</p> <a href="{{ url('/layanan/dedicated') }}" class="btn w-100 rounded-3 py-2 fw-bold text-white" style="background-color: #1e3a8a;">Pilih Paket <i class="fas fa-arrow-right ms-2"></i></a>
-                    </div>
+                    <a href="https://wa.me/6285111313319?text=Halo%20WI-RA,%20saya%20tertarik%20{{ $paket['nama'] }}%20{{ $paket['speed'] }}" target="_blank" class="btn btn-success rounded-pill py-2 fw-bold w-100 mt-auto">
+                        <i class="fab fa-whatsapp me-2"></i>Order via WhatsApp
+                    </a>
                 </div>
             </div>
-
-            <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="200">
-                <div class="card border-0 shadow-sm rounded-4 h-100 p-4 text-center d-flex flex-column hover-lift">
-                    <div class="mx-auto mb-4" style="width: 70px; height: 70px; background-color: #e0f2fe; color: #0284c7; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 28px;">
-                        <i class="fas fa-wifi"></i>
-                    </div>
-                    <h5 class="fw-bold mb-3">Broadband Internet</h5>
-                    <p class="text-muted small mb-4">Internet rumahan berkecepatan tinggi untuk kebutuhan streaming dan gaming</p>
-                    
-                    <ul class="list-unstyled text-start small mb-4 mt-auto">
-                        <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i> Kecepatan hingga 100 Mbps</li>
-                        <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i> Unlimited quota</li>
-                        <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i> Modem dipinjamkan</li>
-                        <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i> Biaya instalasi Contact Me</li>
-                    </ul>
-                    
-                    <div class="mt-auto">
-                        <p class="text-primary fw-bold small mb-3">Start from Rp 125 ribu/bulan</p>
-                        <a href="{{ url('/layanan/broadband') }}" class="btn w-100 rounded-3 py-2 fw-bold text-white" style="background-color: #1e3a8a;">Pilih Paket <i class="fas fa-arrow-right ms-2"></i></a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="300">
-                <div class="card border-0 shadow-sm rounded-4 h-100 p-4 text-center d-flex flex-column hover-lift">
-                    <div class="mx-auto mb-4" style="width: 70px; height: 70px; background-color: #e0f2fe; color: #0284c7; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 28px;">
-                        <i class="fas fa-shield-alt"></i>
-                    </div>
-                    <h5 class="fw-bold mb-3">SOHO (Small Office)</h5>
-                    <p class="text-muted small mb-4">Solusi internet untuk kantor kecil dan home office dengan performa optimal</p>
-                    
-                    <ul class="list-unstyled text-start small mb-4 mt-auto">
-                        <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i> Priority support</li>
-                        <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i> Managed WiFi</li>
-                        <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i> Unlimited quota</li>
-                        <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i> Support 24/7</li>
-                    </ul>
-                    
-                    <div class="mt-auto">
-                        <p class="fw-bold small mb-3" style="color: transparent; user-select: none;">Contact Me</p>
-                        <a href="{{ url('/layanan/soho') }}" class="btn w-100 rounded-3 py-2 fw-bold text-white" style="background-color: #1e3a8a;">Pilih Paket <i class="fas fa-arrow-right ms-2"></i></a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="400">
-                <div class="card border-0 shadow-sm rounded-4 h-100 p-4 text-center d-flex flex-column hover-lift">
-                    <div class="mx-auto mb-4" style="width: 70px; height: 70px; background-color: #e0f2fe; color: #0284c7; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 28px;">
-                        <i class="fas fa-bolt"></i>
-                    </div>
-                    <h5 class="fw-bold mb-3">Managed Service</h5>
-                    <p class="text-muted small mb-4">Layanan terkelola lengkap untuk infrastruktur IT perusahaan Anda</p>
-                    
-                    <ul class="list-unstyled text-start small mb-4 mt-auto">
-                        <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i> Network monitoring</li>
-                        <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i> Security management</li>
-                        <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i> Technical support</li>
-                        <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i> Regular maintenance</li>
-                    </ul>
-                    
-                    <div class="mt-auto">
-                        <p class="fw-bold small mb-3" style="color: transparent; user-select: none;">Contact Me</p>
-                        <a href="{{ url('/layanan/managed') }}" class="btn w-100 rounded-3 py-2 fw-bold text-white" style="background-color: #1e3a8a;">Pilih Paket <i class="fas fa-arrow-right ms-2"></i></a>
-                    </div>
-                </div>
-            </div>
-
+            @endforeach
         </div>
     </div>
 </section>
-
-<style>
-    .hover-lift { transition: transform 0.3s ease, box-shadow 0.3s ease; }
-    .hover-lift:hover { 
-        transform: translateY(-8px); 
-        box-shadow: 0 15px 30px rgba(0,0,0,0.1) !important; 
-    }
-</style>

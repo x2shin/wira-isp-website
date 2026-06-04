@@ -65,10 +65,9 @@
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Layanan</a>
                     <ul class="dropdown-menu dropdown-menu-dark border-0 shadow">
-                        <li><a class="dropdown-item py-2" href="{{ url('/layanan/dedicated') }}">Dedicated Internet</a></li>
-                        <li><a class="dropdown-item py-2" href="{{ url('/layanan/soho') }}">SOHO</a></li>
-                        <li><a class="dropdown-item py-2" href="{{ url('/layanan/broadband') }}">Broadband Internet</a></li>
-                        <li><a class="dropdown-item py-2" href="{{ url('/layanan/managed') }}">Managed Service</a></li>
+                        <li><a class="dropdown-item py-2" href="{{ url('/layanan/murmer') }}">Paket Murmer</a></li>
+                        <li><a class="dropdown-item py-2" href="{{ url('/layanan/premium') }}">Paket Premium</a></li>
+                        <li><a class="dropdown-item py-2" href="{{ url('/layanan/sultan') }}">Paket Sultan</a></li>
                         
                         <li><hr class="dropdown-divider border-secondary opacity-25"></li>
                         

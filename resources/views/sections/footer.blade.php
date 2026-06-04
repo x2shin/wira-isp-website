@@ -8,10 +8,9 @@
             
             <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3">
                 <h5 class="text-uppercase mb-4 fw-bold" style="color: #38bdf8;">Layanan</h5>
-                <p><a href="{{ url('/layanan/dedicated') }}" class="text-light text-decoration-none" style="transition: 0.3s;" onmouseover="this.style.color='#38bdf8'" onmouseout="this.style.color='white'">Dedicated Internet</a></p>
-                <p><a href="{{ url('/layanan/soho') }}" class="text-light text-decoration-none" style="transition: 0.3s;" onmouseover="this.style.color='#38bdf8'" onmouseout="this.style.color='white'">SOHO</a></p>
-                <p><a href="{{ url('/layanan/broadband') }}" class="text-light text-decoration-none" style="transition: 0.3s;" onmouseover="this.style.color='#38bdf8'" onmouseout="this.style.color='white'">Broadband Internet</a></p>
-                <p><a href="{{ url('/layanan/managed') }}" class="text-light text-decoration-none" style="transition: 0.3s;" onmouseover="this.style.color='#38bdf8'" onmouseout="this.style.color='white'">Managed Service</a></p>
+                <p><a href="{{ url('/layanan/murmer') }}" class="text-light text-decoration-none" style="transition: 0.3s;" onmouseover="this.style.color='#38bdf8'" onmouseout="this.style.color='white'">Paket Murmer</a></p>
+                <p><a href="{{ url('/layanan/premium') }}" class="text-light text-decoration-none" style="transition: 0.3s;" onmouseover="this.style.color='#38bdf8'" onmouseout="this.style.color='white'">Paket Premium</a></p>
+                <p><a href="{{ url('/layanan/sultan') }}" class="text-light text-decoration-none" style="transition: 0.3s;" onmouseover="this.style.color='#38bdf8'" onmouseout="this.style.color='white'">Paket Sultan</a></p>
             </div>
             
             <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mt-3">

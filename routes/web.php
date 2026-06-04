@@ -16,18 +16,20 @@ Route::get('/kontak', function () {
     return view('pages.kontak');
 });
 
-Route::get('/layanan/dedicated', function () {
-    return view('pages.dedicated');
+// 3. Halaman Layanan Zaynet (Sudah Diperbarui)
+Route::get('/layanan/murmer', function () {
+    return view('pages.murmer');
 });
 
-Route::get('/layanan/soho', function () {
-    return view('pages.soho');
+Route::get('/layanan/premium', function () {
+    return view('pages.premium');
 });
 
-Route::get('/layanan/broadband', function () {
-    return view('pages.broadband');
+Route::get('/layanan/sultan', function () {
+    return view('pages.sultan');
 });
 
+// 4. Halaman Layanan Lainnya
 Route::get('/layanan/managed', function () {
     return view('pages.managed');
 });
