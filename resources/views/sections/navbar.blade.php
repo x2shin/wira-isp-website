@@ -87,8 +87,22 @@
                     <a class="nav-link" href="{{ url('/kontak') }}">Kontak</a>
                 </li>
                 
-                <li class="nav-item ms-lg-4 mt-3 mt-lg-0">
-                    <a class="btn btn-hubungi w-100 text-center" href="{{ url('/kontak') }}">Hubungi Kami</a>
+                <li class="nav-item dropdown ms-lg-4 mt-3 mt-lg-0">
+                    <a class="btn btn-hubungi w-100 text-center text-white text-decoration-none dropdown-toggle px-4 py-2" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Hubungi Kami
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-end dropdown-menu-dark border-0 shadow mt-2">
+                        <li>
+                            <a class="dropdown-item py-2 d-flex align-items-center" href="https://wa.me/6285111313319?text=Halo%20WI-RA,%20saya%20ingin%20berkonsultasi%20mengenai%20layanan%20internet" target="_blank">
+                                <i class="fab fa-whatsapp me-3 fs-5 text-success"></i> WhatsApp
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item py-2 d-flex align-items-center" href="https://mail.google.com/mail/?view=cm&fs=1&to=Handy@wifiranduagung.com" target="_blank">
+                                <i class="fas fa-envelope me-3 fs-5 text-info"></i> Email (Gmail)
+                            </a>
+                        </li>
+                    </ul>
                 </li>
                 
             </ul>

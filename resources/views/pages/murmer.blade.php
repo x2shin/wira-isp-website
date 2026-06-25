@@ -28,8 +28,8 @@
                 <div>
                     <span class="speed-number">10</span> <span class="speed-unit">Mbps</span>
                 </div>
-                <div class="price-text">Rp116K</div>
-                
+<div class="price-text">Rp {{ number_format((int)($hargaSheet['murmer'] ?? 150000), 0, ',', '.') }}</div>
+
                 <ul class="feature-list">
                     <li>✓ Unlimited Internet</li>
                     <li>✓ Stabil untuk Streaming</li>

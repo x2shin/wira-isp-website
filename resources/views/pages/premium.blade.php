@@ -30,7 +30,7 @@
                 <div>
                     <span class="speed-number">25</span> <span class="speed-unit">Mbps</span>
                 </div>
-                <div class="price-text">Rp150K</div>
+                <div class="price-text">Rp{{ number_format($hargaSheet['premium'], 0, ',', '.') }}</div>
                 
                 <ul class="feature-list">
                     <li>✓ Unlimited Internet</li>

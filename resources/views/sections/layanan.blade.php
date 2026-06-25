@@ -10,7 +10,8 @@
             [
                 'nama' => 'PAKET MURMER',
                 'speed' => '10 Mbps',
-                'harga' => 'Rp116K',
+                // Terhubung ke Google Sheets
+                'harga' => 'Rp ' . number_format((int)($hargaSheet['murmer'] ?? 116000), 0, ',', '.'),
                 'fitur' => [
                     'Unlimited Internet',
                     'Stabil untuk Streaming',
@@ -22,7 +23,8 @@
             [
                 'nama' => 'PAKET PREMIUM',
                 'speed' => '25 Mbps',
-                'harga' => 'Rp150K',
+                // Terhubung ke Google Sheets
+                'harga' => 'Rp ' . number_format((int)($hargaSheet['premium'] ?? 150000), 0, ',', '.'),
                 'popular' => true,
                 'fitur' => [
                     'Unlimited Internet',
@@ -36,7 +38,8 @@
             [
                 'nama' => 'PAKET SULTAN',
                 'speed' => '50 Mbps',
-                'harga' => 'Rp200K',
+                // Terhubung ke Google Sheets
+                'harga' => 'Rp ' . number_format((int)($hargaSheet['sultan'] ?? 200000), 0, ',', '.'),
                 'fitur' => [
                     'Unlimited Internet',
                     'Ping Stabil Gaming',

@@ -5,9 +5,14 @@
 @section('custom_css')
 <style>
     .page-hero { background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%); padding: 150px 0 80px 0; color: white; }
-    .form-control, .form-select { border-radius: 10px; padding: 12px 15px; border: 1px solid #cbd5e1; }
+    .form-control, .form-select { border-radius: 10px; padding: 12px 15px; border: 1px solid #cbd5e1; box-shadow: none; }
     .form-control:focus, .form-select:focus { border-color: #3b82f6; box-shadow: 0 0 0 0.25rem rgba(59, 130, 246, 0.25); }
     .contact-info-icon { width: 40px; height: 40px; background-color: #e0f2fe; color: #0284c7; border-radius: 50%; display: flex; align-items: center; justify-content: center; }
+    
+    .modern-dropdown .dropdown-menu { border-radius: 12px; padding: 10px; border: 1px solid #e2e8f0; box-shadow: 0 10px 25px rgba(0,0,0,0.08); margin-top: 5px !important; }
+    .modern-dropdown .dropdown-item { border-radius: 8px; padding: 10px 15px; color: #475569; font-weight: 500; transition: all 0.2s ease; margin-bottom: 2px; }
+    .modern-dropdown .dropdown-item:hover, .modern-dropdown .dropdown-item.active { background-color: #3b82f6; color: white; }
+    .modern-dropdown .form-select { cursor: pointer; background-color: #fff; text-align: left; }
 </style>
 @endsection
 
@@ -44,12 +49,17 @@
                                 </div>
                                 <div class="col-12">
                                     <label class="form-label small fw-semibold">Jenis Layanan</label>
-                                    <select id="inputLayanan" class="form-select">
-                                        <option value="Belum Menentukan" selected>Pilih layanan yang diinginkan</option>
-                                        <option value="Broadband Internet">Broadband Internet</option>
-                                        <option value="Dedicated Internet">Dedicated Internet</option>
-                                        <option value="SOHO">SOHO</option>
-                                    </select>
+                                    <div class="dropdown modern-dropdown w-100">
+                                        <input type="hidden" id="inputLayanan" value="Belum Menentukan">
+                                        <button class="form-select w-100" type="button" id="dropdownLayanan" data-bs-toggle="dropdown" aria-expanded="false">
+                                            Pilih layanan yang diinginkan
+                                        </button>
+                                        <ul class="dropdown-menu w-100" aria-labelledby="dropdownLayanan">
+                                            <li><a class="dropdown-item" href="#" data-value="Paket Murmer">Paket Murmer</a></li>
+                                            <li><a class="dropdown-item" href="#" data-value="Paket Premium">Paket Premium</a></li>
+                                            <li><a class="dropdown-item" href="#" data-value="Paket Sultan">Paket Sultan</a></li>
+                                        </ul>
+                                    </div>
                                 </div>
                                 <div class="col-12">
                                     <label class="form-label small fw-semibold">Pesan</label>
@@ -107,21 +117,36 @@
     </section>
 
     <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const dropdownItems = document.querySelectorAll('.modern-dropdown .dropdown-item');
+            const hiddenInput = document.getElementById('inputLayanan');
+            const dropdownButton = document.getElementById('dropdownLayanan');
+
+            dropdownItems.forEach(item => {
+                item.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    dropdownItems.forEach(i => i.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    const value = this.getAttribute('data-value');
+                    hiddenInput.value = value;
+                    dropdownButton.textContent = value;
+                });
+            });
+        });
+
         function kirimDataKeWA() {
-            // Ambil data dari form
             var nama = document.getElementById('inputNama').value;
             var wa = document.getElementById('inputWa').value;
             var email = document.getElementById('inputEmail').value;
             var layanan = document.getElementById('inputLayanan').value;
             var pesan = document.getElementById('inputPesan').value;
 
-            // Validasi: Cegah form terkirim jika Nama, WA, atau Pesan kosong
             if(nama.trim() === '' || wa.trim() === '' || pesan.trim() === '') {
                 alert('Tolong lengkapi Nama, No. WhatsApp, dan Pesan Anda terlebih dahulu ya!');
                 return;
             }
 
-            // Susun template pesan
             var textWa = "Halo tim WI-RA, saya ingin berkonsultasi mengenai layanan internet.%0A%0A" +
                          "*Nama:* " + nama + "%0A" +
                          "*No WA:* " + wa + "%0A" +
@@ -129,10 +154,8 @@
                          "*Layanan:* " + layanan + "%0A" +
                          "*Pesan:* " + pesan;
 
-            // Buat URL API WhatsApp
             var urlWa = "https://wa.me/6285111313319?text=" + textWa;
             
-            // Buka tab WhatsApp
             window.open(urlWa, '_blank');
         }
     </script>
