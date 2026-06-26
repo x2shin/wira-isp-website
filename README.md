@@ -16,15 +16,7 @@ Data harga paket layanan disimpan di dalam file JSON agar website berjalan denga
 ## Panduan Deployment (Server Ubuntu)
 Jika Anda men-deploy website ini di server Ubuntu, pastikan konfigurasi *web server* sudah benar:
 
-1. **Web Server:**
-   - **Nginx:** Pastikan `location /` di konfigurasi Nginx Anda berisi:
-     ```nginx
-     try_files $uri $uri/ /index.php?$query_string;
-     ```
-   - **Apache:** Pastikan `mod_rewrite` aktif dan `AllowOverride All` sudah diatur pada konfigurasi direktori agar file `.htaccess` berfungsi.
-
-2. **Permission:**
-   Pastikan folder `storage/` dan `bootstrap/cache/` memiliki izin tulis (*writable*) oleh *web server* (www-data).
-
----
-*Dikembangkan oleh [x2shin|rdms]*
+### 1. Web Server
+- **Nginx:** Pastikan `location /` di konfigurasi Nginx Anda berisi:
+  ```nginx
+  try_files $uri $uri/ /index.php?$query_string;
