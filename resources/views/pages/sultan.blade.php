@@ -26,11 +26,17 @@
         <div class="container" data-aos="zoom-in">
             <div class="dark-paket-card mx-auto">
                 <span class="badge-populer-dark">SULTAN</span>
-                <div class="paket-title">PAKET SULTAN</div>
+                
+                <!-- 1. Nama Paket Otomatis -->
+                <div class="paket-title">{{ $hargaSheet['sultan']['nama'] ?? 'PAKET SULTAN' }}</div>
+                
+                <!-- 2. Kecepatan (Mbps) Otomatis -->
                 <div>
-                    <span class="speed-number">50</span> <span class="speed-unit">Mbps</span>
+                    <span class="speed-number">{{ $hargaSheet['sultan']['kecepatan'] ?? 50 }}</span> <span class="speed-unit">Mbps</span>
                 </div>
-                <div class="price-text">Rp{{ number_format($hargaSheet['sultan'], 0, ',', '.') }}</div>
+                
+                <!-- 3. Harga Otomatis -->
+                <div class="price-text">Rp {{ number_format((int)($hargaSheet['sultan']['harga'] ?? 400000), 0, ',', '.') }}</div>
                 
                 <ul class="feature-list">
                     <li>✓ Unlimited Internet</li>
@@ -41,7 +47,8 @@
                     <li>✓ Biaya Pemasangan 100K</li>
                 </ul>
                 
-                <a href="https://wa.me/6285111313319?text=Halo%20WI-RA,%20saya%20tertarik%20PAKET%20SULTAN%2050%20Mbps" target="_blank" class="btn-pesan">
+                <!-- 4. Link WhatsApp Otomatis -->
+                <a href="https://wa.me/6285111313319?text=Halo%20WI-RA,%20saya%20tertarik%20{{ urlencode($hargaSheet['sultan']['nama'] ?? 'PAKET SULTAN') }}%20{{ $hargaSheet['sultan']['kecepatan'] ?? 50 }}%20Mbps" target="_blank" class="btn-pesan">
                     <i class="fas fa-comment-dots me-2"></i> PESAN SEKARANG
                 </a>
             </div>
