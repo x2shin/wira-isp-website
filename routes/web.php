@@ -1,41 +1,36 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use Illuminate\Support\Facades\Http;
-use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\File; 
 
 function getHarga() {
-    $csvUrl = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vS9QPkL0X1KPlLlbGUL3hmTffkSc153oMS5guNIrHd5PBw14CsxF8-UweqIeX7DzYT3r9hgDbIh33jj/pub?output=csv&refresh=' . time();
+    // Menentukan lokasi file JSON (di dalam folder storage/app/harga.json)
+    $path = storage_path('app/harga.json');
 
-    return Cache::remember('harga_paket_wira', 1, function () use ($csvUrl) {
-        $data = ['murmer' => 150000, 'premium' => 250000, 'sultan' => 350000];
-        try {
-            // DITAMBAHKAN withoutVerifying() AGAR BISA TEMBUS DI LOCALHOST
-            $response = Http::withoutVerifying()->timeout(5)->get($csvUrl);
-            
-            if ($response->successful()) {
-                $baris = explode("\n", trim(str_replace("\r", "", $response->body())));
-                array_shift($baris);
-                foreach ($baris as $b) {
-                    $k = str_getcsv($b);
-                    if (isset($k[0], $k[1])) {
-                        $data[trim(strtolower($k[0]))] = preg_replace('/[^0-9]/', '', $k[1]);
-                    }
-                }
-            }
-        } catch (\Exception $e) {}
-        return $data;
-    });
+    // Jika file json tidak ditemukan, gunakan harga default ini agar web tidak error
+    if (!File::exists($path)) {
+        return [
+            'murmer' => 150000, 
+            'premium' => 250000, 
+            'sultan' => 350000
+        ];
+    }
+
+    // Membaca isi file JSON dan mengubahnya menjadi array
+    $json = File::get($path);
+    return json_decode($json, true);
 }
 
+// Route untuk test (Buka di browser: localhost:8000/test-harga)
 Route::get('/test-harga', function () {
     $harga = getHarga();
-    return "<h3>Status: KONEKSI SUKSES!</h3>" . 
+    return "<h3>Status: BACA JSON SUKSES!</h3>" . 
            "Harga Murmer: Rp " . number_format($harga['murmer'], 0, ',', '.') . "<br>" .
            "Harga Premium: Rp " . number_format($harga['premium'], 0, ',', '.') . "<br>" .
            "Harga Sultan: Rp " . number_format($harga['sultan'], 0, ',', '.');
 });
 
+// Route Utama
 Route::get('/', function () { return view('welcome', ['hargaSheet' => getHarga()]); });
 Route::get('/tentang', function () { return view('pages.tentang', ['hargaSheet' => getHarga()]); });
 Route::get('/kontak', function () { return view('pages.kontak', ['hargaSheet' => getHarga()]); });
