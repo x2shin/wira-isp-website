@@ -8,10 +8,9 @@
         @php
         $pakets = [
             [
-                'nama' => 'PAKET MURMER',
-                'speed' => '10 Mbps',
-                // Terhubung ke Google Sheets
-                'harga' => 'Rp ' . number_format((int)($hargaSheet['murmer'] ?? 116000), 0, ',', '.'),
+                'nama' => $hargaSheet['murmer']['nama'] ?? 'PAKET MURMER',
+                'speed' => ($hargaSheet['murmer']['kecepatan'] ?? 10) . ' Mbps',
+                'harga' => 'Rp ' . number_format((int)($hargaSheet['murmer']['harga'] ?? 150000), 0, ',', '.'),
                 'fitur' => [
                     'Unlimited Internet',
                     'Stabil untuk Streaming',
@@ -21,10 +20,9 @@
                 ]
             ],
             [
-                'nama' => 'PAKET PREMIUM',
-                'speed' => '25 Mbps',
-                // Terhubung ke Google Sheets
-                'harga' => 'Rp ' . number_format((int)($hargaSheet['premium'] ?? 150000), 0, ',', '.'),
+                'nama' => $hargaSheet['premium']['nama'] ?? 'PAKET PREMIUM',
+                'speed' => ($hargaSheet['premium']['kecepatan'] ?? 25) . ' Mbps',
+                'harga' => 'Rp ' . number_format((int)($hargaSheet['premium']['harga'] ?? 250000), 0, ',', '.'),
                 'popular' => true,
                 'fitur' => [
                     'Unlimited Internet',
@@ -36,10 +34,9 @@
                 ]
             ],
             [
-                'nama' => 'PAKET SULTAN',
-                'speed' => '50 Mbps',
-                // Terhubung ke Google Sheets
-                'harga' => 'Rp ' . number_format((int)($hargaSheet['sultan'] ?? 200000), 0, ',', '.'),
+                'nama' => $hargaSheet['sultan']['nama'] ?? 'PAKET SULTAN',
+                'speed' => ($hargaSheet['sultan']['kecepatan'] ?? 50) . ' Mbps',
+                'harga' => 'Rp ' . number_format((int)($hargaSheet['sultan']['harga'] ?? 400000), 0, ',', '.'),
                 'fitur' => [
                     'Unlimited Internet',
                     'Ping Stabil Gaming',
@@ -69,7 +66,7 @@
                         @endforeach
                     </ul>
                     
-                    <a href="https://wa.me/6285111313319?text=Halo%20WI-RA,%20saya%20tertarik%20{{ $paket['nama'] }}%20{{ $paket['speed'] }}" target="_blank" class="btn btn-success rounded-pill py-2 fw-bold w-100 mt-auto">
+                    <a href="https://wa.me/6285111313319?text=Halo%20WI-RA,%20saya%20tertarik%20{{ urlencode($paket['nama']) }}%20{{ urlencode($paket['speed']) }}" target="_blank" class="btn btn-success rounded-pill py-2 fw-bold w-100 mt-auto">
                         <i class="fab fa-whatsapp me-2"></i>Order via WhatsApp
                     </a>
                 </div>
