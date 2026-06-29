@@ -2,16 +2,16 @@
     "murmer": {
         "nama": "PAKET MURMER",
         "kecepatan": 10,
-        "harga": 150000
+        "harga": 116000
     },
     "premium": {
         "nama": "PAKET PREMIUM",
         "kecepatan": 20,
-        "harga": 190000
+        "harga": 150000
     },
     "sultan": {
         "nama": "PAKET SULTAN",
         "kecepatan": 50,
-        "harga": 400000
+        "harga": 200000
     }
 }
