@@ -10,9 +10,21 @@ function getHarga() {
     // Jika file json tidak ditemukan, gunakan harga default ini agar web tidak error
     if (!File::exists($path)) {
         return [
-            'murmer' => 150000, 
-            'premium' => 250000, 
-            'sultan' => 350000
+            'murmer' => [
+                'nama' => 'PAKET MURMER',
+                'kecepatan' => 10,
+                'harga' => 150000
+            ], 
+            'premium' => [
+                'nama' => 'PAKET PREMIUM',
+                'kecepatan' => 30,
+                'harga' => 300000
+            ], 
+            'sultan' => [
+                'nama' => 'PAKET SULTAN',
+                'kecepatan' => 50,
+                'harga' => 400000
+            ]
         ];
     }
 
@@ -25,12 +37,12 @@ function getHarga() {
 Route::get('/test-harga', function () {
     $harga = getHarga();
     return "<h3>Status: BACA JSON SUKSES!</h3>" . 
-           "Harga Murmer: Rp " . number_format($harga['murmer'], 0, ',', '.') . "<br>" .
-           "Harga Premium: Rp " . number_format($harga['premium'], 0, ',', '.') . "<br>" .
-           "Harga Sultan: Rp " . number_format($harga['sultan'], 0, ',', '.');
+           "Harga Murmer: Rp " . number_format($harga['murmer']['harga'], 0, ',', '.') . "<br>" .
+           "Harga Premium: Rp " . number_format($harga['premium']['harga'], 0, ',', '.') . "<br>" .
+           "Harga Sultan: Rp " . number_format($harga['sultan']['harga'], 0, ',', '.');
 });
 
-// Route Utama
+// Route Utama (Biarkan nama variablenya tetap hargaSheet agar tidak perlu merubah file blade yang sudah jalan)
 Route::get('/', function () { return view('welcome', ['hargaSheet' => getHarga()]); });
 Route::get('/tentang', function () { return view('pages.tentang', ['hargaSheet' => getHarga()]); });
 Route::get('/kontak', function () { return view('pages.kontak', ['hargaSheet' => getHarga()]); });
